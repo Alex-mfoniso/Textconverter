@@ -1,0 +1,59 @@
+You can create a simple web page that converts text to audio when a button is clicked using HTML, CSS, and JavaScript. To achieve this, you can use the Web Speech API, which provides a way to access speech synthesis (text-to-speech) capabilities in modern web browsers. Here's a basic example:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text to Audio Converter</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to Audio Converter</h1>
+    <textarea id="textToConvert" rows="4" cols="50" placeholder="Enter text to convert"></textarea>
+    <br>
+    <button id="convertButton">Convert to Audio</button>
+    <br>
+    <div id="audioContainer">
+        <audio controls id="audioPlayer" style="display: none;"></audio>
+    </div>
+    <script>
+        const textToConvert = document.getElementById('textToConvert');
+        const convertButton = document.getElementById('convertButton');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioContainer = document.getElementById('audioContainer');
+
+        convertButton.addEventListener('click', () => {
+            const text = textToConvert.value;
+            if (text.trim() !== '') {
+                // Create a SpeechSynthesisUtterance
+                const speech = new SpeechSynthesisUtterance(text);
+                
+                // Add the utterance to the SpeechSynthesis queue
+                speechSynthesis.speak(speech);
+                
+                // Display the audio player with the spoken text
+                audioPlayer.src = URL.createObjectURL(new Blob([speech.text], {type: 'audio/mpeg'}));
+                audioPlayer.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+This code creates a simple web page where you can enter text in a textarea, click the "Convert to Audio" button, and the text will be spoken aloud, with an audio player displayed below for playback control. Make sure your browser supports the Web Speech API for this code to work.
