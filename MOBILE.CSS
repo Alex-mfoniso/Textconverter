@@ -1,0 +1,20 @@
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  textarea {
+    font-size: 2rem;
+  }
+
+
+
+  #convertButton {
+    font-size: 2rem;
+    margin: 3rem;
+  }
+
+  /* #audioContainer {
+    align-items: center;
+  } */
+}
